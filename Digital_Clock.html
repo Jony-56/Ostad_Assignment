@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        var sec = 0;
+        var min = 0;
+        var hrs = 0;
+
+        $(document).ready(function () {
+            setInterval(function () {
+                sec++;
+                if (sec === 60) {
+                    min++;
+                    sec = 0;
+                    if (min === 60) {
+                        hrs++;
+                        min = 0;
+                        if (hrs === 24) {
+                            hrs = 0;
+                            
+                        }
+                    }
+                }
+                var period = (hrs >= 12) ? "PM" : "AM"
+
+                $('#clk').html(hrs+ ":" +min+ ":" +sec+" "+period );
+                
+
+            }, 1000);
+        });
+    </script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #clk {
+            font-size: 50px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="clk"></div>
+</body>
+</html>
